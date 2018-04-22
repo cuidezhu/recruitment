@@ -13,6 +13,8 @@ import {
 
 import reducers from './reducer'
 import './config'
+import Register from './container/register/register';
+import Login from './container/login/login';
 
 const store = createStore(reducers, compose(
   applyMiddleware(thunk),
@@ -22,6 +24,10 @@ const store = createStore(reducers, compose(
 ReactDom.render(
 	(<Provider store={store}>
 		<BrowserRouter>
+      <div>
+        <Route path='/login' component={Login}></Route>
+        <Route path='/register' component={Register}></Route>
+      </div>
 		</BrowserRouter>
 	</Provider>),
 	document.getElementById('root')
