@@ -15,6 +15,8 @@ import reducers from './reducer'
 import Auth from './Auth'
 import Dashboard from './Dashboard'
 
+import './config'
+
 const store = createStore(reducers, compose(
   applyMiddleware(thunk),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
