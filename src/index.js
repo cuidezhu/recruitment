@@ -13,8 +13,8 @@ import {
 
 import reducers from './reducer'
 import './config'
-import Register from './container/register/register';
-import Login from './container/login/login';
+import Register from './container/register/register'
+import Login from './container/login/login'
 
 const store = createStore(reducers, compose(
   applyMiddleware(thunk),
