@@ -21,10 +21,10 @@ class Register extends React.Component {
           <WhiteSpace/>
           <InputItem>确认密码</InputItem>
           <WhiteSpace/>
-          <RadioItem checked={this.state.type == 'genius'}>
+          <RadioItem checked={this.state.type === 'genius'}>
             牛人
           </RadioItem>
-          <RadioItem checked={this.state.type == 'boss'}>
+          <RadioItem checked={this.state.type === 'boss'}>
             BOSS
           </RadioItem>
           <WhiteSpace/>
