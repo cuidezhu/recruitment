@@ -15,6 +15,8 @@ import reducers from './reducer'
 import './config'
 import Register from './container/register/register'
 import Login from './container/login/login'
+import AuthRoute from './components/authroute/authroute'
+
 
 const store = createStore(reducers, compose(
   applyMiddleware(thunk),
@@ -25,6 +27,7 @@ ReactDom.render(
 	(<Provider store={store}>
 		<BrowserRouter>
       <div>
+        <AuthRoute></AuthRoute>
         <Route path='/login' component={Login}></Route>
         <Route path='/register' component={Register}></Route>
       </div>
