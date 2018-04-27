@@ -13,6 +13,7 @@ import {
 
 import reducers from './reducer'
 import './config'
+import './index.css'
 import Register from './container/register/register'
 import Login from './container/login/login'
 import AuthRoute from './components/authroute/authroute'
