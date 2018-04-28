@@ -6,7 +6,7 @@ const userRouter = require('./user')
 
 const app = express()
 app.use(cookieParser())
-app.user(bodyParser.json())
+app.use(bodyParser.json())
 
 app.use('/user', userRouter)
 
