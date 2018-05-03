@@ -42,7 +42,6 @@ function errorMsg(msg) {
 }
 
 export function loadData(userinfo) {
-  console.log(loadData)
   return { type: LOAD_DATA, payload: userinfo}
 }
 
