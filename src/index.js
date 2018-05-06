@@ -19,15 +19,12 @@ import Login from './container/login/login'
 import AuthRoute from './components/authroute/authroute'
 import BossInfo from './container/bossinfo/bossinfo'
 import GeniusInfo from './container/geniusinfo/geniusinfo'
+import Dashboard from './components/dashboard/dashboard'
 
 const store = createStore(reducers, compose(
   applyMiddleware(thunk),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 ))
-
-function Boss() {
-  return <h2>BOSS页面</h2>
-}
 
 ReactDom.render(
 	(<Provider store={store}>
@@ -39,6 +36,7 @@ ReactDom.render(
           <Route path='/geniusinfo' component={GeniusInfo}></Route>
           <Route path='/login' component={Login}></Route>
           <Route path='/register' component={Register}></Route>
+          <Route component={Dashboard}></Route>
         </Switch>
       </div>
 		</BrowserRouter>
