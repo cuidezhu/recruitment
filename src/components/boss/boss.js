@@ -33,9 +33,9 @@ class Boss extends React.Component {
               extra={<span>{v.title}</span>}
             ></Header>
             <Body>
-              {v.desc.split('/n').map(v => {
+              {v.desc.split('\n').map(v => (
                 <div key={v}>{v}</div>
-              })}
+              ))}
             </Body>
           </Card> : null
         ))}
