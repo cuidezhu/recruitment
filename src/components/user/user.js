@@ -6,6 +6,14 @@ import { Result, List, WhiteSpace } from 'antd-mobile'
   state=>state.user
 )
 class User extends React.Component {
+  constructor(props) {
+    super(props)
+    this.logout = this.logout.bind(this)
+  }
+
+  logout() {
+    console.log('logout')
+  }
 
   render() {
     const props = this.props
@@ -30,7 +38,7 @@ class User extends React.Component {
         </List>
         <WhiteSpace></WhiteSpace>
         <List>
-          <Item>退出登录</Item>
+          <Item onClick={this.logout}>退出登录</Item>
         </List>
       </div>
     ) : null

@@ -17,7 +17,6 @@ function Msg() {
 class Dashboard extends React.Component {
   
   render() {
-    console.log(this.props)
     const { pathname } = this.props.location
     const user = this.props.user
 
