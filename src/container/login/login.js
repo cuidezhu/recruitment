@@ -37,7 +37,7 @@ class Login extends React.Component {
   render() {
     return (
       <React.Fragment>
-        {this.props.redirectTo ? <Redirect to={this.props.redirectTo}/> : null}        
+        {this.props.redirectTo && this.props.redirectTo !== '/login' ? <Redirect to={this.props.redirectTo}/> : null}        
         <Logo></Logo>
         <WingBlank>
           <List>
