@@ -22,17 +22,26 @@ import { Redirect } from 'react-router-dom'
 
 // 属性代理
 function WrapperHello(Comp) {
-  class WrapComp extends React.Component {
-
+  class WrapComp extends Comp {
+    componentDidMount() {
+      console.log('高阶组件新增的生命周期，加载完成')
+    }
+    
     render() {
-      return (
-        <div>
-          <p>这是HOC高阶组件特有的元素</p>
-          <Comp {...this.props}></Comp>
-        </div>
-      )
+      return <Comp></Comp>
     }
   }
+  // class WrapComp extends React.Component {
+
+  //   render() {
+  //     return (
+  //       <div>
+  //         <p>这是HOC高阶组件特有的元素</p>
+  //         <Comp name='text' {...this.props}></Comp>
+  //       </div>
+  //     )
+  //   }
+  // }
 
   return WrapComp
 }
