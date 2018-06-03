@@ -1,6 +1,6 @@
 import React from 'react'
 import { PropTypes } from 'prop-types'
-import { Card, WhiteSpace, WingBlank } from 'antd-mobile'
+import { Card, WingBlank } from 'antd-mobile'
 import { withRouter } from 'react-router-dom'
 
 @withRouter
@@ -30,11 +30,11 @@ class UserCard extends React.Component {
               extra={<span>{v.title}</span>}
             ></Header>
             <Body>
-              {v.type == 'boss' ? <div>公司：{v.company}</div> : null}
+              {v.type === 'boss' ? <div>公司：{v.company}</div> : null}
               {v.desc.split('\n').map(d => (
                 <div key={d}>{d}</div>
               ))}
-              {v.type == 'boss' ? <div>薪资：{v.money}</div> : null}
+              {v.type === 'boss' ? <div>薪资：{v.money}</div> : null}
             </Body>
           </Card> : null
         ))}
