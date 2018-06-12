@@ -19,8 +19,7 @@ class Chat extends React.Component {
     }
   }
   componentDidMount() {
-    this.props.getMsgList()
-    this.props.recvMsg()
+    
     // socket.on('recvmsg', (data) => {
     //   this.setState({
     //     msg: [...this.state.msg, data.text]
