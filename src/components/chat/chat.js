@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavBar, List, InputItem } from 'antd-mobile'
+import { NavBar, List, InputItem, Icon } from 'antd-mobile'
 import io from 'socket.io-client'
 import { connect } from 'react-redux'
 import { getMsgList, sendMsg, recvMsg } from '../../redux/chat.redux'
@@ -44,7 +44,13 @@ class Chat extends React.Component {
     }
     return (
       <div id='chat-page'>
-        <NavBar mode='dark'>
+        <NavBar 
+          mode='dark'
+          icon={<Icon type="left" />}
+          onLeftClick={() => {
+            this.props.history.goBack()
+          }}
+        >
           {users[userid].name}
         </NavBar>
 
