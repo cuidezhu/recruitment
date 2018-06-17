@@ -44,7 +44,7 @@ class Chat extends React.Component {
       return null
     }
     const chatid = getChatId(userid, this.props.user._id)
-    const chatmsgs = this.props.chat.chatmsg.filter(v=>v.chatid=chatid)
+    const chatmsgs = this.props.chat.chatmsg.filter(v=>v.chatid===chatid)
     return (
       <div id='chat-page'>
         <NavBar 
