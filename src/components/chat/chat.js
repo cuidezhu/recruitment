@@ -37,6 +37,8 @@ class Chat extends React.Component {
   }
 
   render() {
+    const emoji = '😄 😂 😊'
+
     const userid = this.props.match.params.user
     const Item = List.Item
     const users = this.props.chat.users
