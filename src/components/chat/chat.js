@@ -25,6 +25,12 @@ class Chat extends React.Component {
       this.props.recvMsg()
     }
   }
+
+  fixCarousel() {
+    setTimeout(function() {
+      window.dispatchEvent(new Event('resize'))
+    }, 0)
+  }
   
   handleSubmit() {
     // socket.emit('sendmsg', {text: this.state.text})
@@ -33,7 +39,10 @@ class Chat extends React.Component {
     const to = this.props.match.params.user
     const msg = this.state.text
     this.props.sendMsg({from, to, msg})
-    this.setState({text: ''})
+    this.setState({
+      text: '',
+      showEmoji: false
+    })
   }
 
   render() {
@@ -84,17 +93,37 @@ class Chat extends React.Component {
               onChange={v => {
                 this.setState({text:v})
               }}
-              extra={<span onClick={()=>this.handleSubmit()}>发送</span>}
+              extra={
+                <div>
+                  <span
+                    style={{ marginRight: 15 }}
+                    onClick={()=> {
+                      this.setState({
+                        showEmoji: !this.state.showEmoji
+                      })
+                      this.fixCarousel()
+                    }}
+                  >😄</span>
+                  <span onClick={()=>this.handleSubmit()}>发送</span>
+                </div>
+              }
             >
 
             </InputItem>
           </List>
-          <Grid 
+          {this.state.showEmoji ? <Grid 
             data={emoji}
             columnNum={9}
             carouselMaxRow={1}
             isCarousel={true}
-           />
+            onClick={el=>{
+              this.setState({
+                text: this.state.text + el.text
+              })
+            }}
+           /> : null
+          }
+          
         </div>
       </div>
     )
