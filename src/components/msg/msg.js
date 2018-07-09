@@ -11,6 +11,8 @@ class Msg extends React.Component {
   render() {
     const Item = List.Item
     const Brief = Item.Brief
+    const userid = this.props.user._id
+    const userInfo = this.props.chat.users
     const msgGroup = {}
     this.props.chat.chatmsg.forEach(v => {
       msgGroup[v.chatid] = msgGroup[v.chatid] || []
@@ -20,20 +22,24 @@ class Msg extends React.Component {
     const chatList = Object.values(msgGroup)
     return (
       <div>
-        <List>
           {chatList.map(v => {
             console.log(v)
             const lastItem = this.getLast(v)
+            const targetId = v[0].from === userid ? v[0].to : v[0].from
+            if (!userInfo[targetId]) {
+              return null
+            }
             return (
-              <Item
-                key={lastItem._id}
-              >
-                {lastItem.content}
-                <Brief>用户名</Brief>
-              </Item>
+              <List key={lastItem._id}>
+                <Item
+                  thumb={require(`../img/${userInfo[targetId].avatar}.png`)}
+                >
+                  {lastItem.content}
+                  <Brief>{userInfo[targetId].name}</Brief>
+                </Item>
+              </List>
             )
           })}
-        </List>
       </div>
     )
   }
