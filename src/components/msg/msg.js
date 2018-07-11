@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { List } from 'antd-mobile'
+import { List, Badge } from 'antd-mobile'
 @connect(
   state=>state
 )
@@ -26,12 +26,14 @@ class Msg extends React.Component {
             console.log(v)
             const lastItem = this.getLast(v)
             const targetId = v[0].from === userid ? v[0].to : v[0].from
+            const unreadNum = v.filter(v => !v.read && v.to === userid).length
             if (!userInfo[targetId]) {
               return null
             }
             return (
               <List key={lastItem._id}>
                 <Item
+                  extra={<Badge text={unreadNum}></Badge>}
                   thumb={require(`../img/${userInfo[targetId].avatar}.png`)}
                 >
                   {lastItem.content}
