@@ -5,6 +5,23 @@ import model from './model'
 import path from 'path'
 
 import React from 'react'
+import {renderToString} from 'react-dom/server'
+
+import { createStore, applyMiddleware, compose } from 'redux'
+import thunk from 'redux-thunk'
+import { Provider } from 'react-redux'
+
+import { 
+  StaticRouter
+} from 'react-router-dom'
+
+import csshook from 'css-modules-require-hook/preset' // import hook before routes
+
+import App from '../src/app'
+
+import reducers from '../src/reducer'
+
+
 
 const app = express()
 const User = model.getModel('user')
@@ -16,11 +33,7 @@ const server = require('http').Server(app)
 const io = require('socket.io')(server)
 
 
-function App() {
-  return <h2>server render</h2>
-}
-
-console.log(App())
+console.log(renderToString(<App></App>))
 io.on('connection', function(socket) {
   socket.on('sendmsg', function(data) {
 
@@ -45,8 +58,26 @@ app.use(function(req, res, next) {
   if (req.url.startsWith('/user/')||req.url.startsWith('/static/')) {
     return next()
   }
+
+  const store = createStore(reducers, compose(
+    applyMiddleware(thunk)
+  ))
+
+  let context = {}
+  const markup = renderToString(
+    (<Provider store={store}>
+      <StaticRouter
+        location={req.url}
+        context={context}
+      >
+        <App></App>
+      </StaticRouter>
+    </Provider>)
+  )
+
+  res.send(markup)
   
-  return res.sendFile(path.resolve('build/index.html'))
+  // return res.sendFile(path.resolve('build/index.html'))
 })
 app.use('/', express.static(path.resolve('build')))
 

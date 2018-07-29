@@ -19,4 +19,4 @@ cd server
 yarn add nodemon
 ```
 
-用 `nodemon server` 命令启动服务端
+用 `yarn server` 命令启动服务端
