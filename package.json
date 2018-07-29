@@ -119,7 +119,8 @@
     "extends": "react-app",
     "rules": {
       "eqeqeq": ["off"],
-      "jsx-a11y/accessible-emoji": ["off"]
+      "jsx-a11y/accessible-emoji": ["off"],
+      "semi": ["warn", "never"]
     }
   },
   "proxy": "http://localhost:9093"
