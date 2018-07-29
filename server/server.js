@@ -37,7 +37,7 @@ app.use(function(req, res, next) {
   if (req.url.startsWith('/user/')||req.url.startsWith('/static/')) {
     return next()
   }
-  console.log('path resolve', path.resolve('build/index.html'))
+  
   return res.sendFile(path.resolve('build/index.html'))
 })
 app.use('/', express.static(path.resolve('build')))
