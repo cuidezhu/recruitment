@@ -16,6 +16,10 @@ import {
 } from 'react-router-dom'
 
 import csshook from 'css-modules-require-hook/preset' // import hook before routes
+import assethook from 'asset-require-hook'
+assethook({
+  extensions: ['png']
+})
 
 import App from '../src/app'
 
@@ -33,7 +37,6 @@ const server = require('http').Server(app)
 const io = require('socket.io')(server)
 
 
-console.log(renderToString(<App></App>))
 io.on('connection', function(socket) {
   socket.on('sendmsg', function(data) {
 

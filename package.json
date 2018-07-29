@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "antd-mobile": "^2.1.8",
+    "asset-require-hook": "^1.2.0",
     "autoprefixer": "7.1.6",
     "axios": "^0.18.0",
     "babel-cli": "^6.26.0",
