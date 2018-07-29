@@ -7,6 +7,8 @@ import path from 'path'
 import React from 'react'
 import {renderToString} from 'react-dom/server'
 
+import staticPath from '../build/asset-manifest.json'
+
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
@@ -87,6 +89,7 @@ app.use(function(req, res, next) {
   
       <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
       <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+      <link rel="stylesheet" href="/${staticPath['main.css']}">
   
       <title>React App</title>
     </head>
@@ -95,6 +98,7 @@ app.use(function(req, res, next) {
         You need to enable JavaScript to run this app.
       </noscript>
       <div id="root">${markup}</div>
+      <script src="/${staticPath['main.js']}"></script>
     </body>
   </html>`
 
